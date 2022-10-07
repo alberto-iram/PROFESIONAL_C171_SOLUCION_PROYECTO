@@ -23,12 +23,12 @@ AFRAME.registerComponent("markerhandler", {
       "https://raw.githubusercontent.com/whitehatjr/ar-toy-store-assets/master/toy-shop.png";
 
     swal({
-      title: "Welcome to Toy Shop!!",
+      title: "¡Bienvenido a la tienda de juguetes!",
       icon: iconUrl,
       content: {
         element: "input",
         attributes: {
-          placeholder: "Type your uid Ex:( U01 )"
+          placeholder: "Escribe tu ID de usuario, por ejemplo:( U01 )"
         }
       }
     }).then(inputValue => {
@@ -42,40 +42,40 @@ AFRAME.registerComponent("markerhandler", {
       swal({
         icon: "warning",
         title: toy.toy_name.toUpperCase(),
-        text: "This toy is out of stock!!!",
+        text: "¡Este juguete no está disponible!",
         timer: 2500,
         buttons: false
       });
     } else {
-      // Changing Model scale to initial scale
+      // Cambia el tamaño del modelo a su escala inicial
       var model = document.querySelector(`#model-${toy.id}`);
       model.setAttribute("position", toy.model_geometry.position);
       model.setAttribute("rotation", toy.model_geometry.rotation);
       model.setAttribute("scale", toy.model_geometry.scale);
 
-      // make model visible
+      // Haz que el modelo sea visible
       var model = document.querySelector(`#model-${toy.id}`);
       model.setAttribute("visible", true);
 
-      // make mian plane Container visible
+      // Haz que el plano principal del contenedor sea visible
       var mainPlane = document.querySelector(`#main-plane-${toy.id}`);
       mainPlane.setAttribute("visible", true);
 
-      // Changing button div visibility
+      // Cambia la visibilidad del botón div
       var buttonDiv = document.getElementById("button-div");
       buttonDiv.style.display = "flex";
 
       var orderButtton = document.getElementById("order-button");
       var orderSummaryButtton = document.getElementById("order-summary-button");
 
-      // Handling Click Events
+      // Usa eventos de clic
       orderButtton.addEventListener("click", () => {
         uid = uid.toUpperCase();
         this.handleOrder(uid, toy);
 
         swal({
           icon: "https://i.imgur.com/4NZ6uLY.jpg",
-          title: "Thanks For Order !",
+          title: "¡Gracias por tu orden!",
           text: "  ",
           timer: 2000,
           buttons: false
@@ -85,14 +85,14 @@ AFRAME.registerComponent("markerhandler", {
       orderSummaryButtton.addEventListener("click", () => {
         swal({
           icon: "warning",
-          title: "Order Summary",
-          text: "Work In Progress"
+          title: "Resumen de la orden",
+          text: "Operación en curso"
         });
       });
     }
   },
   handleOrder: function(uid, toy) {
-    // Reading current UID order details
+    // Lectura de los detalles de la orden del UID actual
     firebase
       .firestore()
       .collection("users")
@@ -102,10 +102,10 @@ AFRAME.registerComponent("markerhandler", {
         var details = doc.data();
 
         if (details["current_orders"][toy.id]) {
-          // Increasing Current Quantity
+          // Incrementar la cantidad actual
           details["current_orders"][toy.id]["quantity"] += 1;
 
-          //Calculating Subtotal of item
+          //Calcular el subtotal del artículo
           var currentQuantity = details["current_orders"][toy.id]["quantity"];
 
           details["current_orders"][toy.id]["subtotal"] =
@@ -121,7 +121,7 @@ AFRAME.registerComponent("markerhandler", {
 
         details.total_bill += toy.price;
 
-        // Updating Db
+        // Actualizar la base de datos
         firebase
           .firestore()
           .collection("users")
@@ -139,7 +139,7 @@ AFRAME.registerComponent("markerhandler", {
       });
   },
   handleMarkerLost: function() {
-    // Changing button div visibility
+    // Cambia la visibilidad del botón div
     var buttonDiv = document.getElementById("button-div");
     buttonDiv.style.display = "none";
   }
