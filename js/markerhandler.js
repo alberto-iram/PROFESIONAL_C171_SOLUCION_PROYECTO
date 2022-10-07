@@ -28,7 +28,7 @@ AFRAME.registerComponent("markerhandler", {
       content: {
         element: "input",
         attributes: {
-          placeholder: "Escribe tu ID de usuario, por ejemplo:( U01 )"
+          placeholder: "Escribe tu ID de usuario, por ejemplo: ( U01 )"
         }
       }
     }).then(inputValue => {
