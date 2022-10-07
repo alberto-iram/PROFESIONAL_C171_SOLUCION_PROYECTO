@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ar Toy Shop</title>
+    <title>Tienda de juguetes AR</title>
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
@@ -23,7 +23,7 @@
     <!-- sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- El núcleo JS SDK de Firebase siempre es requerido y debe listarse primero -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
     <script>
@@ -36,14 +36,14 @@
         appId: "1:730692904949:web:0f72a095af54503028a2bc",
         measurementId: "G-WB8D6DY4VW"
       };
-      // Initialize Firebase
+      // Inicializar Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
 
-    <!-- Local StyleSheet -->
+    <!-- StyleSheet local -->
     <link href="./style.css" rel="stylesheet" />
 
-    <!--JS Files-->
+    <!--Archivos JS-->
     <script src="./js/addButtons.js"></script>
     <script src="./js/addMarkers.js"></script>
     <script src="./js/markerhandler.js"></script>
@@ -62,10 +62,10 @@
       createbuttons
       createmarkers
     >
-      <!-- Camera -->
+      <!-- Cámara -->
       <a-entity camera></a-entity>
     </a-scene>
-    <!-- Button Main Div -->
+    <!-- Botón div principal -->
     <div id="button-div"></div>
   </body>
 </html>
