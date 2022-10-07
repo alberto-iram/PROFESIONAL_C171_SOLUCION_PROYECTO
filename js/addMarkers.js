@@ -105,7 +105,7 @@ AFRAME.registerComponent("createmarkers", {
           width: 2,
           height: 5,
           align: "center",
-          value: `AGE : ${toy.age_group}`
+          value: `Edad : ${toy.age_group}`
         });
 
         mainPlane.appendChild(age);
